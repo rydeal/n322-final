@@ -1,27 +1,23 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { Plugins } from "@capacitor/core";
+import { UsersService } from "./services/users.service";
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+const { SplashScreen, StatusBar } = Plugins;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"],
 })
 export class AppComponent {
-  constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar
-  ) {
-    this.initializeApp();
-  }
+  constructor(private dataService: UsersService) {
+    this.dataService.load();
+    SplashScreen.hide().catch((err) => {
+      console.warn(err);
+    });
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+    StatusBar.hide().catch((err) => {
+      console.warn(err);
     });
   }
 }

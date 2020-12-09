@@ -1,39 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="tertiary">
     <ion-title slot="end">
-      NEWM-N 322 Final Project: Ryan Deal | Calorie Counting App
+      <!-- Meals for {{ date.name }} -->
     </ion-title>
     <ion-buttons slot="start">
-      <ion-button (click)="addUser()"> Add User Here&nbsp;&nbsp;&nbsp;
-        <ion-icon name="person-add-sharp"></ion-icon>
-      </ion-button>
+      <!-- <ion-button (click)="addDate()"> Add a new Date Here &nbsp;&nbsp;&nbsp; -->
+        <ion-icon name="add-circle-sharp"></ion-icon>
+    <!--  </ion-button> -->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-list lines="none">
-    <ion-item-sliding *ngFor="let user of dataService.users">
-      <ion-item routerLink="/user/{{user.id}}" routerDirection="forward">
-        <ion-label>{{ user.name }}</ion-label>
-        <span>Limit of <strong>{{ user.calorieCount }}</strong> calories per day</span>
+    <ion-item-sliding>
+      <ion-item>
+        <!-- <ion-label>{{ date.name }}</ion-label> -->
       </ion-item>
       <ion-item-options slot="end">
         <ion-item-option
           color="light"
-          expandable="true"
-          (click)="renameUser(user)"
-        >
+          expandable="true">
           <ion-icon slot="icon-only" name="clipboard"></ion-icon>
         </ion-item-option>
         <ion-item-option
           color="danger"
-          expandable="true"
-          (click)="removeUser(user)"
-        >
+          expandable="true">
           <ion-icon slot="icon-only" name="trash"></ion-icon>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 </ion-content>
+
